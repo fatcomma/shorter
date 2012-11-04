@@ -13,8 +13,10 @@ MANAGERS = ADMINS
 # Set path programmatically
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 # 
-SHORTENER_SITE_NAME = 'localhost:8000'
-SHORTENER_SITE_BASE_URL = 'http://' + SHORTENER_SITE_NAME + '/'
+SHORTER_SITE_NAME = 'localhost:8000'
+SHORTER_SITE_BASE_URL = 'http://' + SHORTER_SITE_NAME + '/'
+SHORTER_REQUIRE_LOGIN = True
+SHORTER_LOG_HITS = True
 
 DATABASES = {
     'default': {
@@ -123,7 +125,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'gunicorn',

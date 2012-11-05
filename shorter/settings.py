@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 # Set path programmatically
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 # 
-SHORTER_SITE_NAME = 'localhost'
+SHORTER_SITE_NAME = '54.245.120.47'
 SHORTER_SITE_BASE_URL = 'http://' + SHORTER_SITE_NAME + '/'
 SHORTER_REQUIRE_LOGIN = False
 SHORTER_LOG_HITS = True

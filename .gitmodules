@@ -10,3 +10,6 @@
 [submodule "deploy/cookbooks/gunicorn"]
 	path = deploy/cookbooks/gunicorn
 	url = git://github.com/opscode-cookbooks/gunicorn.git
+[submodule "gunicorn"]
+	path = gunicorn
+	url = git://github.com/opscode-cookbooks/gunicorn.git

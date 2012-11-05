@@ -1,7 +1,7 @@
 # Django settings for shorter project.
 import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -15,7 +15,7 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 # 
 SHORTER_SITE_NAME = 'localhost'
 SHORTER_SITE_BASE_URL = 'http://' + SHORTER_SITE_NAME + '/'
-SHORTER_REQUIRE_LOGIN = True
+SHORTER_REQUIRE_LOGIN = False
 SHORTER_LOG_HITS = True
 
 DATABASES = {

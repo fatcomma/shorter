@@ -12,7 +12,7 @@ server {
     keepalive_timeout 5;
 
     # path for static files
-    root /home/ryan/projects/test1/templates;
+    root /opt/shorter/shorter/templates;
 
     location / {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

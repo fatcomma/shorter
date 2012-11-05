@@ -4,7 +4,7 @@
 # This script bootstraps a system by running install.sh
 
 # Get hostname from commandline argument
-HOST="${1:-ubuntu@ec2-50-112-237-34.us-west-2.compute.amazonaws.com}"
+HOST="${1:-}"
 # Set path to key being used for server
 KEY="/home/ryan/.ssh/id_rsa.pub" 
 

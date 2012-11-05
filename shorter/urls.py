@@ -5,10 +5,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', 'shorter.views.index'),
+    #(r'^$', 'shorter.views.index'),
     (r'^submit/$', 'shorter.views.submit'),
     (r'^(?P<base62_id>\w+)$', 'shorter.views.follow'),
-    (r'^info/(?P<base62_id>\w+)$', 'shorter.views.info'),
+    #(r'^info/(?P<base62_id>\w+)$', 'shorter.views.info'),
 
     # Examples:
     # url(r'^$', 'shorter.views.home', name='home'),

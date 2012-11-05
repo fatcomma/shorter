@@ -41,18 +41,18 @@ def default_values(request, link_form=None):
              'link_form': link_form,
              }
 
-def info(request, base62_id):
-    """
-    View which shows information on a particular link
-    """
-    key = base62.to_decimal(base62_id)
-    link = get_object_or_404(Link, pk = key)
-    values = default_values(request)
-    values['link'] = link
-    return render_to_response(
-        'shorter/link_info.html',
-        values,
-        context_instance=RequestContext(request))
+#def info(request, base62_id):
+#    """
+#    View which shows information on a particular link
+#    """
+#    key = base62.to_decimal(base62_id)
+#    link = get_object_or_404(Link, pk = key)
+#    values = default_values(request)
+#    values['link'] = link
+#    return render_to_response(
+#        'shorter/link_info.html',
+#        values,
+#        context_instance=RequestContext(request))
 
 def submit(request):
     """
@@ -83,23 +83,25 @@ def submit(request):
             #'shorter/submit_success.html',
             #values,
             #context_instance=RequestContext(request))
-    values = default_values(request, link_form=link_form)
-    return render_to_response(
-        'shorter/submit_failed.html',
-        values,
-        context_instance=RequestContext(request))
+    #values = default_values(request, link_form=link_form)
+    failed = "There was a problem shortening this URL, please try again."
+    return HttpResponse(failed, mimetype="application/json")
+    #return render_to_response(
+    #    'shorter/submit_failed.html',
+    #    values,
+    #    context_instance=RequestContext(request))
 
-def index(request):
-    """
-    View for main page (lists recent and popular links)
-    """
-    values = default_values(request)
-    values['recent_links'] = Link.objects.all().order_by('-date_submitted')[0:10]
-    values['most_popular_links'] = Link.objects.all().order_by('-usage_count')[0:10]
-    return render_to_response(
-        'shorter/index.html',
-        values,
-        context_instance=RequestContext(request))
+#def index(request):
+#    """
+#    View for main page (lists recent and popular links)
+#    """
+#    values = default_values(request)
+#    values['recent_links'] = Link.objects.all().order_by('-date_submitted')[0:10]
+#    values['most_popular_links'] = Link.objects.all().order_by('-usage_count')[0:10]
+#    return render_to_response(
+#        'shorter/index.html',
+#        values,
+#        context_instance=RequestContext(request))
 
 def is_allowed_to_submit(request):
     """

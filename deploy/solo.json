@@ -1,0 +1,11 @@
+{
+   "run_list":[
+      "recipe[nginx::default]",
+      "recipe[ohai::default]",
+      "recipe[python::default]",
+      "recipe[gunicorn::default]",
+      "recipe[shorter::default]",
+      "recipe[shorter::nginx]",
+      "recipe[shorter::gunicorn]"
+   ]
+}

@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 # Set path programmatically
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 # 
-SHORTER_SITE_NAME = 'localhost:8000'
+SHORTER_SITE_NAME = 'localhost'
 SHORTER_SITE_BASE_URL = 'http://' + SHORTER_SITE_NAME + '/'
 SHORTER_REQUIRE_LOGIN = True
 SHORTER_LOG_HITS = True
@@ -65,7 +65,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = '/opt/shorter/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -99,7 +99,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:

@@ -18,7 +18,7 @@ class Link(models.Model):
         if not self.id:
             # Check url: we don't want cyclic relationships
             if settings.SHORTER_SITE_NAME in self.url:
-                raise AttributeError(u'Are you kidding? This url seems to be already shortened')
+                raise AttributeError(u'This URL has already been shortened!')
         super(Link, self).save(*args, **kwargs)
 
     def to_base62(self):

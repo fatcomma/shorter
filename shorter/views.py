@@ -49,8 +49,6 @@ def info(request, base62_id):
     link = get_object_or_404(Link, pk = key)
     values = default_values(request)
     values['link'] = link
-    #serialized_data = simplejson.dumps
-    #return HttpResponse(serialized_data, mimetype="application/json")
     return render_to_response(
         'shorter/link_info.html',
         values,
@@ -77,34 +75,19 @@ def submit(request):
             new_link = Link(url = url)
             new_link.save()
             link = new_link
-        values = default_values(request)
-        values['link'] = link
-        return render_to_response(
-            'shorter/submit_success.html',
-            values,
-            context_instance=RequestContext(request))
+        #values = default_values(request)
+        #values['link'] = link
+        short_url_response = link.short_url()
+        return HttpResponse(short_url_response, mimetype="application/json")
+        #return render_to_response(
+            #'shorter/submit_success.html',
+            #values,
+            #context_instance=RequestContext(request))
     values = default_values(request, link_form=link_form)
     return render_to_response(
         'shorter/submit_failed.html',
         values,
         context_instance=RequestContext(request))
-
-def set(request):
-    """
-    View for shortening a URL.
-    """
-    url = request.GET.get('url')
-    link = None
-    try:
-        link = Link.objects.get(url = url)
-    except Link.DoesNotExist:
-        pass
-    if link == None:
-        new_link = Link(url = url)
-        new_link.save()
-                link = new_link
-    values = default_values(request)
-    values['link'] = link
 
 def index(request):
     """

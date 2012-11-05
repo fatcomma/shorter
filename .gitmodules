@@ -1,0 +1,12 @@
+[submodule "deploy/cookbooks/python"]
+	path = deploy/cookbooks/python
+	url = git://github.com/opscode-cookbooks/python.git
+[submodule "deploy/cookbooks/nginx"]
+	path = deploy/cookbooks/nginx
+	url = git://github.com/opscode-cookbooks/nginx.git
+[submodule "deploy/cookbooks/ohai"]
+	path = deploy/cookbooks/ohai
+	url = git://github.com/opscode-cookbooks/ohai.git
+[submodule "deploy/cookbooks/gunicorn"]
+	path = deploy/cookbooks/gunicorn
+	url = git://github.com/opscode-cookbooks/gunicorn.git

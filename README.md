@@ -15,3 +15,12 @@ To get the full URL of a shortened URL:
 Which will return the full, original URL:
 
     https://www.google.com
+
+### Deployment
+
+Deploy the application with the following commands:
+
+    cd deploy/
+    ./deploy.sh user@hostname.com
+
+You'll need to edit the deploy.sh file to point at the correct SSH key (~/.ssh/id_rsa.pub by default).

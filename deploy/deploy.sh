@@ -6,7 +6,7 @@
 # Get hostname from commandline argument
 HOST="${1:-}"
 # Set path to key being used for server
-KEY="/home/ryan/.ssh/id_rsa.pub" 
+KEY="~/.ssh/id_rsa.pub" 
 
 # Remove any existing entries from known_hosts
 ssh-keygen -R "${HOST#*@}" 2> /dev/null

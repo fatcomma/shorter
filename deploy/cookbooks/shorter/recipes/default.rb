@@ -12,4 +12,5 @@ git "/opt/shorter/" do
     repository "git://github.com/grado/shorter.git"
     reference "HEAD"
     action :sync
+    enable_submodules true
 end

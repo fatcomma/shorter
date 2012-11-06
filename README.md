@@ -4,10 +4,14 @@ A URL can be shortened with the following:
 
     curl -X GET http://example.com/submit/?u=https://www.google.com
 
-You will then get a response with the shortened URL.
+Which will return a shortened URL:
+    
+    http://example.com/X
 
-A shortened URL can be expanded similarly:
+To get the full URL of a shortened URL:
     
     curl -X GET http://example.com/X
 
-Which will return the full original URL. 
+Which will return the full, original URL:
+
+    https://www.google.com

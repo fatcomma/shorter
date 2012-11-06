@@ -23,4 +23,4 @@ Deploy the application with the following commands:
     cd deploy/
     ./deploy.sh user@hostname.com
 
-You'll need to edit the deploy.sh file to point at the correct SSH key (~/.ssh/id_rsa.pub by default).
+You'll need to edit the deploy.sh file to point at the correct SSH key needed to access your server.

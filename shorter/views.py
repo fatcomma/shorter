@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, get_list_or_404
-from django.http import HttpResponse, Http404 
+from django.http import HttpResponse, Http404, HttpResponsePermanentRedirect
 from django.db import transaction
 from django.conf import settings
 
@@ -16,7 +16,7 @@ def follow(request, base62_id):
     if settings.SHORTER_LOG_HITS:
         link.usage_count += 1
         link.save()
-    return HttpResponse(link.url, mimetype="application/json")
+    return HttpResponsePermanentRedirect(link.url)
 
 def submit(request):
     """

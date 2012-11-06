@@ -1,12 +1,5 @@
-import logging
-
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate
-from django.shortcuts import get_object_or_404, get_list_or_404, render_to_response
-from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpResponsePermanentRedirect
-from django.utils import simplejson
-from django.template import RequestContext
-from django.views.decorators.http import require_POST
+from django.shortcuts import get_object_or_404, get_list_or_404
+from django.http import HttpResponse, Http404 
 from django.db import transaction
 from django.conf import settings
 
@@ -24,35 +17,6 @@ def follow(request, base62_id):
         link.usage_count += 1
         link.save()
     return HttpResponse(link.url, mimetype="application/json")
-    #return HttpResponsePermanentRedirect(link.url)
-
-def default_values(request, link_form=None):
-    """
-    Return a new object with the default values that are typically
-    returned in a request.
-    """
-    if not link_form:
-        link_form = LinkSubmitForm()
-    allowed_to_submit = is_allowed_to_submit(request)
-    return { 'show_bookmarklet': allowed_to_submit,
-             'show_url_form': allowed_to_submit,
-             'site_name': settings.SHORTER_SITE_NAME,
-             'site_base_url': settings.SHORTER_SITE_BASE_URL,
-             'link_form': link_form,
-             }
-
-#def info(request, base62_id):
-#    """
-#    View which shows information on a particular link
-#    """
-#    key = base62.to_decimal(base62_id)
-#    link = get_object_or_404(Link, pk = key)
-#    values = default_values(request)
-#    values['link'] = link
-#    return render_to_response(
-#        'shorter/link_info.html',
-#        values,
-#        context_instance=RequestContext(request))
 
 def submit(request):
     """
@@ -75,37 +39,7 @@ def submit(request):
             new_link = Link(url = url)
             new_link.save()
             link = new_link
-        #values = default_values(request)
-        #values['link'] = link
         short_url_response = link.short_url()
         return HttpResponse(short_url_response, mimetype="application/json")
-        #return render_to_response(
-            #'shorter/submit_success.html',
-            #values,
-            #context_instance=RequestContext(request))
-    #values = default_values(request, link_form=link_form)
     failed = "There was a problem shortening this URL, please try again."
     return HttpResponse(failed, mimetype="application/json")
-    #return render_to_response(
-    #    'shorter/submit_failed.html',
-    #    values,
-    #    context_instance=RequestContext(request))
-
-#def index(request):
-#    """
-#    View for main page (lists recent and popular links)
-#    """
-#    values = default_values(request)
-#    values['recent_links'] = Link.objects.all().order_by('-date_submitted')[0:10]
-#    values['most_popular_links'] = Link.objects.all().order_by('-usage_count')[0:10]
-#    return render_to_response(
-#        'shorter/index.html',
-#        values,
-#        context_instance=RequestContext(request))
-
-def is_allowed_to_submit(request):
-    """
-    Return true if user is allowed to submit URLs
-    """
-    return not settings.SHORTER_REQUIRE_LOGIN or request.user.is_authenticated()
-
